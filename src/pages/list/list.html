@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>नवरात्रि Message</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+ <ion-list>
+   <ion-item *ngFor="let item of msgList">
+      <ion-card>
+        <ion-card-content text-wrap [innerHTML]>
+          <p>{{item}}</p>
+        </ion-card-content>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <button ion-button clear small color="secondary"  (click)="ShareOnWhatsApp(item)">
+                      <ion-icon name="logo-whatsapp"></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col>
+                  <button ion-button clear small color="danger" (click)="SocialSharingLink(item)">
+                    <ion-icon name="md-share"></ion-icon>
+                  </button>
+              </ion-col>
+                <ion-col>
+                    <button ion-button clear small color="primary"  (click)="CopyMessage(item)">
+                      <ion-icon name="copy"></ion-icon>
+                    </button>
+                </ion-col>
+              </ion-row>
+        </ion-grid>
+      </ion-card>
+   </ion-item>
+ </ion-list>
+</ion-content>
