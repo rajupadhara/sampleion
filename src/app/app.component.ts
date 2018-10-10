@@ -1,11 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { App, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { AppRate } from '@ionic-native/app-rate';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,13 +16,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, private appRate: AppRate, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private app: App) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'नवरात्रि Status', component: HomePage },
-      { title: 'नवरात्रि Message', component: ListPage }
+      { title: 'Status', component: HomePage },
+      { title: 'Message', component: ListPage }
     ];
 
   }
@@ -34,23 +33,22 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+    });
 
-      this.appRate.preferences = {
-        usesUntilPrompt: 3,
-        storeAppURL: {
-         android: 'market://details?id=com.hutahcode.navratristatus'
+    this.platform.registerBackButtonAction(()=> {      
+        let nav = this.app.getActiveNavs()[0];
+        let activeView = nav.getActive();
+        alert(activeView);
+        alert(activeView.name);
+        if(activeView != null){
+          if(nav.canGoBack())
+            nav.pop();
+          else if (typeof activeView.instance.backButtonAction === 'function')
+            activeView.instance.backButtonAction();
+          else
+            nav.parent.select(0); // goes to the first tab
         }
-      };
-
-      this.appRate.promptForRating(false);
-    });
-
-    this.platform.registerBackButtonAction(()=> {
-      let activeView = this.nav.getActive();
-      if(activeView.name == "HomePage"){
-        this.platform.exitApp();
-      }
-    });
+      });    
   }
 
   openPage(page) {
@@ -58,4 +56,7 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+
+
 }

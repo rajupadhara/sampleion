@@ -12,8 +12,8 @@ import { ImageDetailPage } from './../pages/image-detail/image-detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AppRate } from '@ionic-native/app-rate';
-import { Base64 } from '@ionic-native/base64';
+
+
 
 @NgModule({
   declarations: [
@@ -36,11 +36,9 @@ import { Base64 } from '@ionic-native/base64';
   providers: [
     StatusBar,
     SplashScreen,
-    SocialSharing,
-    AppRate,
+    SocialSharing,    
     AdMobFree,
-    Clipboard,
-    Base64,
+    Clipboard,    
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

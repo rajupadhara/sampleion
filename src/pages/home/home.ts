@@ -18,7 +18,7 @@ export class HomePage {
   }
 
   showBanner() {
-    const bannerConfig : AdMobFreeBannerConfig = {
+    let bannerConfig : AdMobFreeBannerConfig = {
       id: 'ca-app-pub-1223618044962952/7423243692',
       isTesting: true,
       autoShow: true
@@ -27,9 +27,9 @@ export class HomePage {
     this.admobFree.banner.config(bannerConfig);
     this.admobFree.banner.prepare()
       .then(()=> {
-
+        alert("admob sucess");
       })
-      .catch(e => console.log(e));
+      .catch(e => alert(e));
   }
 
 
