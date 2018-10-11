@@ -21,8 +21,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Status', component: HomePage },
-      { title: 'Message', component: ListPage }
+      { title: 'नवरात्रि Status', component: HomePage },
+      { title: 'नवरात्रि Message', component: ListPage },
+      { title: 'Exit', component: null}
     ];
 
   }
@@ -37,16 +38,17 @@ export class MyApp {
 
     this.platform.registerBackButtonAction(()=> {      
         let nav = this.app.getActiveNavs()[0];
-        let activeView = nav.getActive();
-        alert(activeView);
-        alert(activeView.name);
+        let activeView = nav.getActive();                
         if(activeView != null){
-          if(nav.canGoBack())
-            nav.pop();
-          else if (typeof activeView.instance.backButtonAction === 'function')
+          if(nav.canGoBack()){            
+            nav.pop();            
+          }            
+          else if (typeof activeView.instance.backButtonAction === 'function'){            
             activeView.instance.backButtonAction();
-          else
+          }            
+          else{            
             nav.parent.select(0); // goes to the first tab
+          }            
         }
       });    
   }
@@ -54,7 +56,11 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    if(page.title == 'Exit'){
+      this.platform.exitApp();      
+    }else{
+      this.nav.setRoot(page.component);
+    }    
   }
 
 

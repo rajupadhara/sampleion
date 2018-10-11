@@ -19,34 +19,34 @@ export class ImageDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ImageDetailPage');
+    
   }
   
 
   ShareOnWhatsApp(){
     this.socialSharing.shareViaWhatsApp("|| शुभ नवरात्रि ||", this.file, null)
       .then(()=> {
-        console.log("WhatsApp message sent");
+        
       }).catch((error)=> {
-        console.log(error);
+        
       });
   }
 
   ShareOnInstagram(){
     this.socialSharing.shareViaInstagram("|| शुभ नवरात्रि ||", this.file)
       .then(()=> {
-        console.log("instagram message sent");
+        
       }).catch((error)=> {
-        console.log(error);
+        
       });
   }
 
   ShareOnFacebook(){    
     this.socialSharing.shareViaFacebook("|| शुभ नवरात्रि ||", this.file, null)
       .then(()=> {
-        console.log("facebook message sent");
+        
       }).catch((error)=> {
-        console.log(error);
+        
       });
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Clipboard } from '@ionic-native/clipboard';
 
@@ -11,7 +11,7 @@ export class ListPage {
 
   msgList : any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private socialSharing: SocialSharing, private clipboard: Clipboard) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private socialSharing: SocialSharing, private clipboard: Clipboard, private viewCtrl : ViewController) {
     this.msgList.push("सारा जहां है जिसकी शरण में, नमन है उस माँ के चरण में, हम है उस माँ के चरणों की धूल, आओ मिलकर माँ को चढ़ाएं श्रद्धा के फूल। शुभ नवरात्रि।");
     this.msgList.push("माँ दुर्गा के आशीर्वाद से आपका जीवन सुखमय हो। इस पावन नवरात्रि पे हमारी शुभकामनाएं आपके साथ है। …शुभ नवरात्रि");
     this.msgList.push("माँ दुर्गा आपको अपनी 9 भुजाओं से :बल , बुद्धि , ऐश्वर्या , सुख , स्वास्थ्य , शान्ति , यश , निरभीखता , सम्पन्नता , प्रदान करें। हैप्पी नवरात्रि।");
@@ -27,18 +27,18 @@ export class ListPage {
   ShareOnWhatsApp(item){
     this.socialSharing.shareViaWhatsApp( item, null, null)
       .then(()=> {
-        console.log("WhatsApp message sent");
+        
       }).catch((error)=> {
-        console.log(error);
+        
       });
   }
 
   SocialSharingLink(item){
     this.socialSharing.share(item, null, null, null)
       .then(()=> {
-        console.log("social share sent");
+        
       }).catch((error)=> {
-        console.log(error);
+        
       });
   }
 
@@ -49,6 +49,10 @@ export class ListPage {
     catch(e){
 
     }
+  }
+
+  backButtonAction() {
+    this.viewCtrl.dismiss();
   }
 
 }
