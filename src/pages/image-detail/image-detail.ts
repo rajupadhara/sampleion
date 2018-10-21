@@ -15,39 +15,48 @@ export class ImageDetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private socialSharing: SocialSharing, private viewCtrl : ViewController) {
     this.imageid = this.navParams.get('imageid');
-    this.file = "www/assets/imgs/" + this.imageid + ".jpg";    
+    this.file = "www/assets/imgs/" + this.imageid + ".jpg";
   }
 
   ionViewDidLoad() {
-    
+
   }
-  
+
 
   ShareOnWhatsApp(){
-    this.socialSharing.shareViaWhatsApp("|| शुभ नवरात्रि ||", this.file, null)
+    this.socialSharing.shareViaWhatsApp("|| शुभ दशहरा ||", this.file, null)
       .then(()=> {
-        
+
       }).catch((error)=> {
-        
+
       });
   }
 
   ShareOnInstagram(){
-    this.socialSharing.shareViaInstagram("|| शुभ नवरात्रि ||", this.file)
+    this.socialSharing.shareViaInstagram("|| शुभ दशहरा ||", this.file)
       .then(()=> {
-        
+
       }).catch((error)=> {
-        
+
       });
   }
 
-  ShareOnFacebook(){    
-    this.socialSharing.shareViaFacebook("|| शुभ नवरात्रि ||", this.file, null)
+  ShareOnFacebook(){
+    this.socialSharing.shareViaFacebook("|| शुभ दशहरा ||", this.file, null)
       .then(()=> {
-        
+
       }).catch((error)=> {
-        
+
       });
+  }
+
+  ShareAll(){
+    this.socialSharing.share("|| शुभ दशहरा ||", null, this.file)
+    .then(()=> {
+
+    }).catch((error)=> {
+
+    });
   }
 
   backButtonAction() {

@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AdMobFree } from '@ionic-native/admob-free';
+import { AppRate } from '@ionic-native/app-rate';
 import { Clipboard } from '@ionic-native/clipboard';
 
 import { MyApp } from './app.component';
@@ -38,6 +39,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     SocialSharing,    
     AdMobFree,
+    AppRate,
     Clipboard,    
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
