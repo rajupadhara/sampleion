@@ -24,7 +24,7 @@ export class ImageDetailPage {
 
 
   ShareOnWhatsApp(){
-    this.socialSharing.shareViaWhatsApp("|| शुभ दशहरा ||", this.file, null)
+    this.socialSharing.shareViaWhatsApp("|| शुभ दीपावली ||", this.file, null)
       .then(()=> {
 
       }).catch((error)=> {
@@ -33,7 +33,7 @@ export class ImageDetailPage {
   }
 
   ShareOnInstagram(){
-    this.socialSharing.shareViaInstagram("|| शुभ दशहरा ||", this.file)
+    this.socialSharing.shareViaInstagram("|| शुभ दीपावली ||", this.file)
       .then(()=> {
 
       }).catch((error)=> {
@@ -42,7 +42,7 @@ export class ImageDetailPage {
   }
 
   ShareOnFacebook(){
-    this.socialSharing.shareViaFacebook("|| शुभ दशहरा ||", this.file, null)
+    this.socialSharing.shareViaFacebook("|| शुभ दीपावली ||", this.file, null)
       .then(()=> {
 
       }).catch((error)=> {
@@ -51,7 +51,7 @@ export class ImageDetailPage {
   }
 
   ShareAll(){
-    this.socialSharing.share("|| शुभ दशहरा ||", null, this.file)
+    this.socialSharing.share("|| शुभ दीपावली ||", null, this.file)
     .then(()=> {
 
     }).catch((error)=> {
